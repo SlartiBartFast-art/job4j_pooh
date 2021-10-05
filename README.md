@@ -12,4 +12,5 @@
 - В качестве протокола будем использовать HTTP.
   
 
-  ![Image of Arch](https://github.com/SlartiBartFast-art/job4j_pooh/tree/main/image)
+  ![Image of Arch](https://github.com/SlartiBartFast-art/job4j_pooh/blob/main/image/Architecture.jpg)
+  
