@@ -1,2 +1,9 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 job4j_pooh,temp,Temp,7,0,0,0,3,0,2,0,2,0
+job4j_pooh,ru.job4j.pooh,Req,20,146,2,6,3,27,3,9,1,7
+job4j_pooh,ru.job4j.pooh,Resp,3,18,0,0,1,6,1,3,1,3
+job4j_pooh,ru.job4j.pooh,QueueService,8,81,1,5,1,18,1,4,0,2
+job4j_pooh,ru.job4j.pooh,TopicService,8,81,1,5,1,18,1,4,0,2
+job4j_pooh,ru.job4j.pooh,PoohServer,105,0,2,0,30,0,5,0,4,0
+job4j_pooh,ru.job4j.pooh,CASMap,31,0,0,0,7,0,2,0,2,0
+job4j_pooh,ru.job4j.pooh,Temp,4,0,0,0,2,0,2,0,2,0

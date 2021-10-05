@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueueService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">job4j_pooh</a> &gt; <a href="index.source.html" class="el_package">ru.job4j.pooh</a> &gt; <span class="el_source">QueueService.java</span></div><h1>QueueService.java</h1><pre class="source lang-java linenums">package ru.job4j.pooh;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentMap;
+
+/**
+ * очередь входящих запросов
+ * Resp - ответ от сервиса.
+ * 2. Тестовое задание - проект &quot;Pooh JMS&quot; [#268841 #204529]
+ * Уровень : 3. Мидл Категория : 3.1. Multithreading
+ * Топик : 3.1.7. Контрольные вопросы
+ * Отправитель посылает сообщение с указанием очереди.
+ * new Req(&quot;POST&quot;, &quot;queue&quot;, &quot;weather&quot;, params)
+ * Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+ * ConcurrentLinkedQueue - FIFO
+ * в случае необходимости вывода в виде temperature=18 вместо 18
+ * поменять  c.add(hm);  на c.add(req.keyMap() + &quot;=&quot; + hm);
+ * Для выбора метода GET или POST используйте константы &quot;GET&quot;.equals(req.method()),
+ * а не на оборот. req.method.equals(&quot;GET&quot;).
+ * Для реализации QueueService и TopicService вам хватить методов putIfAbsent и get.
+ * Для реализации QueueService и TopicService нужно использовать многопоточные коллекции.
+ *
+ * @author SlartiBartFast-art
+ * @version 01
+ * @since 01.10.2021
+ */
+<span class="fc" id="L31">public class QueueService implements Service {</span>
+<span class="fc" id="L32">    private final ConcurrentHashMap&lt;String, ConcurrentLinkedQueue&lt;String&gt;&gt; concurrentHashMap = new ConcurrentHashMap&lt;&gt;();</span>
+
+    @Override
+    public Resp process(Req req) {
+<span class="fc" id="L36">        Resp resp = null;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (&quot;POST&quot;.equals(req.method())) {</span>
+<span class="fc" id="L38">            var qn = req.queue();</span>
+<span class="fc" id="L39">            var hm = req.param(req.keyMap());</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">            if (concurrentHashMap.get(qn) == null) {</span>
+<span class="fc" id="L41">                ConcurrentLinkedQueue&lt;String&gt; c = new ConcurrentLinkedQueue&lt;&gt;();</span>
+<span class="fc" id="L42">                c.add(hm);</span>
+<span class="fc" id="L43">                concurrentHashMap.putIfAbsent(qn, c);</span>
+<span class="fc" id="L44">            } else {</span>
+<span class="nc" id="L45">                concurrentHashMap.get(qn).add(hm); /* put */</span>
+            }
+<span class="fc" id="L47">            resp = new Resp(hm, 1);</span>
+        }
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (&quot;GET&quot;.equals(req.method())) {</span>
+<span class="fc" id="L50">            var qn = req.queue();</span>
+<span class="fc" id="L51">            var clq = concurrentHashMap.get(qn);</span>
+<span class="fc" id="L52">            resp = new Resp(concurrentHashMap.get(qn).poll(), -1); /* extract */</span>
+<span class="fc" id="L53">            System.out.println(resp.text());</span>
+        }
+<span class="fc" id="L55">        return resp;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

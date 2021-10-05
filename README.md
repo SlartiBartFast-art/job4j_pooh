@@ -12,4 +12,4 @@
 - В качестве протокола будем использовать HTTP.
   
 
-  ![Image of Yaktocat](https://github.com/SlartiBartFast-art/job4j_pooh/tree/main/image)
+  ![Image of Arch](https://github.com/SlartiBartFast-art/job4j_pooh/tree/main/image)
