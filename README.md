@@ -9,4 +9,7 @@
 
 - В качестве клиента будем использовать cURL. https://curl.se/download.html
 
-- В качестве протокола будем использовать HTTP. 
+- В качестве протокола будем использовать HTTP.
+  
+
+  ![Image of Yaktocat](https://github.com/SlartiBartFast-art/job4j_pooh/tree/main/image)
