@@ -4,8 +4,8 @@ package ru.job4j.pooh;
  * 2. Тестовое задание - проект "Pooh JMS" [#268841]
  * Уровень : 3. Мидл Категория : 3.1. Multithreading
  * Топик : 3.1.7. Контрольные вопросы
- * часть 3
  * Resp - ответ от сервиса.
+ *
  * @author SlartiBartFast-art
  * @version 01
  * @since 17.09.2021
@@ -25,5 +25,13 @@ public class Resp {
 
     public int status() {
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return "Resp{"
+                + "text='" + text + '\''
+                + ", status=" + status
+                + '}';
     }
 }
