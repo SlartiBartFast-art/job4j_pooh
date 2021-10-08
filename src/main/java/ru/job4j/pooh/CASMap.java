@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Если указанный ключ еще не связан со значением, пытается вычислить его значение с помощью заданной
  * функции сопоставления и вводит его в эту карту, если null.
  * ConcurrentLinkedQueue<String> boolean	add(E e) Вставляет указанный элемент в конец этой очереди.
+ * was - var text = queue.get(name, emptyQueue()).poll();
  *
  * @author SlartiBartFast-art
  * @version 01
@@ -23,16 +24,11 @@ public class CASMap {
     public static void main(String[] args) {
         ConcurrentHashMap<String, ConcurrentLinkedQueue<String>> queue = new ConcurrentHashMap<>();
         String name = "weather";
-
         /* add if empty */
         queue.putIfAbsent(name, new ConcurrentLinkedQueue<>());
-
         /* put */
         queue.get(name).add("value");
-
         /* extract */
         var text = queue.get(name).poll();
-        /* was */
-        // var text = queue.get(name, emptyQueue()).poll();
     }
 }

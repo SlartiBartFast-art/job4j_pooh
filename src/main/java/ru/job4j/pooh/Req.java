@@ -8,10 +8,10 @@ import java.util.Map;
  * Уровень : 3. Мидл Категория : 3.1. Multithreading
  * Топик : 3.1.7. Контрольные вопросы
  * Req - класс, служить для парсинга входящего сообщения.
- * private final String method; //method - GET или POST. Он указывает на тип запроса.
- * private final String mode; //mode - указывает на режим работы: queue или topic.
- * private final String queue; // queue -имя очереди
- * private final Map<String, String> params; //text - содержимое запроса.
+ * private final String method; - method - GET или POST. Он указывает на тип запроса.
+ * private final String mode;  -mode - указывает на режим работы: queue или topic.
+ * private final String queue; - queue -имя очереди
+ * private final Map<String, String> params; - text - содержимое запроса.
  *
  * @author SlartiBartFast-art
  * @version 01

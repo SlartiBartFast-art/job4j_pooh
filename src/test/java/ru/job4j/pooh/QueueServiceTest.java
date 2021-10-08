@@ -1,6 +1,7 @@
 package ru.job4j.pooh;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -9,11 +10,13 @@ import java.util.Map;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * queueService.get(String name, ConcurrentLinkedQueue<String> concurrentLinkedQueue).poll()
+ */
 public class QueueServiceTest {
     @Test
     public void whenPostThenGetQueue() {
         var queueService = new QueueService();
-       // queueService.get(String name, ConcurrentLinkedQueue<String> concurrentLinkedQueue).poll()
         Map<String, String> params = new HashMap<>();
         params.put("temperature", "18");
         /* Добавляем данные в очередь weather. Режим queue */
@@ -24,7 +27,6 @@ public class QueueServiceTest {
         var result = queueService.process(
                 new Req("GET", "queue", "weather", null)
         );
-        System.out.println("___ " + result.toString());
         assertThat(result.text(), is("18"));
     }
 }

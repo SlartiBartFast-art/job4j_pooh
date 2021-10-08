@@ -23,18 +23,18 @@ import java.util.concurrent.Executors;
  * 3) В коде не должно быть синхронизации. Внутри Service нужно использовать коллекции
  * из класса concurrency.
  * 4) Загрузите код. Оставьте ссылку на коммит.
- * modes.put("queue", new QueueService()); //очередь входящих запросов
- * modes.put("topic", new TopicService()); // очередь ответов от сервера
+ * modes.put("queue", new QueueService());  - очередь входящих запросов
+ * modes.put("topic", new TopicService()); - очередь ответов от сервера
  * //пулл потоков выполнения
  * ExecutorService pool = Executors.newFixedThreadPool(
- * Runtime.getRuntime().availableProcessors() // по колличеству ядер в процессоре
+ * Runtime.getRuntime().availableProcessors() - по колличеству ядер в процессоре
  * <p>
- * try (ServerSocket server = new ServerSocket(9000)) { //слушать сервер по порту9000
- * while (!server.isClosed()) { //пока не закрото соединение
- * Socket socket = server.accept(); //создать сокет
+ * try (ServerSocket server = new ServerSocket(9000)) {  - слушать сервер по порту9000
+ * while (!server.isClosed()) { - пока не закрото соединение
+ * Socket socket = server.accept();  - создать сокет
  * pool.execute(() -> { //пул потоков
- * try (OutputStream out = socket.getOutputStream(); //запись
- * InputStream input = socket.getInputStream()) {  //чтение
+ * try (OutputStream out = socket.getOutputStream();  - запись
+ * InputStream input = socket.getInputStream()) {  - чтение
  *
  * @author SlartiBartFast-art
  * @version 01
